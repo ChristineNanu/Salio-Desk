@@ -17,7 +17,7 @@ export default function ClientsPage() {
           <Link className="nav-link" href="/repayments"><span className="nav-icon">↙</span> Repayments</Link>
         </nav>
         <div className="sidebar-bottom">
-          <div className="help-card"><span className="help-mark">?</span><div><strong>Need a hand?</strong><span>View the quick guide</span></div></div>
+          <Link className="help-card" href="/guide"><span className="help-mark">?</span><div><strong>Need a hand?</strong><span>View the quick guide</span></div></Link>
           <div className="staff-profile"><span className="avatar">JD</span><span className="staff-name">Desk staff</span><span className="profile-menu">•••</span></div>
         </div>
       </aside>

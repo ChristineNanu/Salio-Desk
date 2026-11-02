@@ -63,10 +63,10 @@ export default function Home() {
         </nav>
 
         <div className="sidebar-bottom">
-          <div className="help-card">
+          <Link className="help-card" href="/guide">
             <span className="help-mark">?</span>
             <div><strong>Need a hand?</strong><span>View the quick guide</span></div>
-          </div>
+          </Link>
           <div className="staff-profile">
             <span className="avatar">JD</span>
             <span className="staff-name">Desk staff</span>
