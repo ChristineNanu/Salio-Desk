@@ -1,0 +1,10 @@
+# Dependencies and build output
+/node_modules
+/.next/
+/out/
+/build/
+
+# Local environment and tooling
+.env*
+.DS_Store
+*.tsbuildinfo
