@@ -84,5 +84,13 @@ button { cursor: pointer; }
 .repayment-row .client-details { gap: 3px; }
 .repayment-row .client-details small:last-child { margin-top: 2px; color: #8e8b99; }
 .repayment-amount { flex-shrink: 0; color: #3e8161; font-size: 10px; font-weight: 600; }
+.stat-money { font-size: 19px; letter-spacing: -.4px; }
+.activity-list { margin: 0; padding: 0; list-style: none; }
+.activity-row { display: flex; align-items: center; gap: 12px; min-height: 68px; padding: 11px 21px; border-top: 1px solid #f2f0f4; }
+.activity-icon { display: grid; flex: 0 0 31px; place-items: center; width: 31px; height: 31px; border-radius: 9px; font-size: 14px; }
+.activity-payment { background: #eaf7f1; color: #51a581; }.activity-loan { background: #f1edff; color: #775dd8; }
+.activity-row .client-details { gap: 4px; }.activity-row .client-details small { white-space: normal; }
+.activity-amount { flex-shrink: 0; color: #514d5d; font-size: 10px; font-weight: 600; }
+.section-heading .text-button { text-decoration: none; }
 @media (max-width: 900px) { .sidebar { width: 205px; }.main-panel { margin-left: 205px; }.topbar { padding: 0 25px; }.content { padding: 35px 25px 24px; } }
 @media (max-width: 650px) { .sidebar { position: static; width: auto; height: auto; padding: 15px 18px; border-right: 0; border-bottom: 1px solid #f0eef3; }.brand { margin: 0 0 13px 2px; }.workspace-label, .sidebar-bottom { display: none; }.navigation { display: flex; gap: 5px; }.nav-link { height: 34px; padding: 0 10px; }.main-panel { margin-left: 0; }.topbar { height: 52px; padding: 0 18px; }.today-label { display: none; }.content { padding: 30px 17px 20px; }.welcome-row { align-items: flex-end; gap: 12px; }.welcome-row h1 { font-size: 23px; }.welcome-copy { max-width: 220px; line-height: 1.5; }.primary-button { flex-shrink: 0; padding: 0 10px; }.stats-grid { grid-template-columns: 1fr; gap: 9px; }.stat-card { min-height: 102px; }.activity-card { min-height: 360px; }.client-layout { grid-template-columns: 1fr; } }
