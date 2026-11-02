@@ -19,4 +19,18 @@ Open **Repayments** to record a payment against a loan. Each payment needs a uni
 
 Run the automated repayment tests with `npm test`.
 
+## Database design and business rules
+
+The app uses SQLite with three related tables: `clients`, `loans`, and `repayments`. A loan points to its client, and each repayment points to its loan. Foreign keys keep those links valid. Client numbers, loan numbers, and payment references are unique. Loan amounts and repayment amounts are stored as integer cents to avoid rounding errors with money.
+
+A loan's outstanding balance is its total amount due minus the sum of its repayments. Repayments must be greater than zero, refer to an existing loan, use a payment reference that has not been used before, and not exceed the remaining balance. These checks and the repayment insert run in a database transaction, so a rejected payment does not change the balance. The database also requires the total due to be at least the principal amount.
+
+## Automated tests
+
+Run `npm test` to run the automated tests. `tests/repayments.test.ts` covers the three assessment scenarios: a KES 3,000 payment reduces a KES 10,000 balance to KES 7,000; a repeated payment reference is rejected without adding another repayment; and a KES 1,500 payment against KES 1,000 outstanding is rejected without changing the balance. It also tests invalid amounts and missing loans.
+
+## AI tools disclosure
+
+I used ChatGPT to help plan and implement parts of the application, explain code and technical concepts, troubleshoot issues, and review the code. I reviewed the changes and ran the automated tests, and I am responsible for understanding and explaining the submitted code.
+
 
