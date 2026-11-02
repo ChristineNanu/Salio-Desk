@@ -16,6 +16,7 @@ type LoanRow = {
   client_name: string;
   principal_amount: number;
   total_due: number;
+  outstanding_balance: number;
   created_at: string;
 };
 
@@ -26,7 +27,7 @@ function toLoan(row: LoanRow): Loan {
     clientName: row.client_name,
     principalAmount: row.principal_amount,
     totalDue: row.total_due,
-    outstandingBalance: row.total_due,
+    outstandingBalance: row.outstanding_balance,
     createdAt: row.created_at,
   };
 }
@@ -34,7 +35,9 @@ function toLoan(row: LoanRow): Loan {
 export function listLoans(): Loan[] {
   const rows = db.prepare(`
     SELECT loans.loan_number, loans.client_number, clients.full_name AS client_name,
-      loans.principal_amount, loans.total_due, loans.created_at
+      loans.principal_amount, loans.total_due,
+      loans.total_due - COALESCE((SELECT SUM(repayments.amount) FROM repayments WHERE repayments.loan_number = loans.loan_number), 0) AS outstanding_balance,
+      loans.created_at
     FROM loans
     JOIN clients ON clients.client_number = loans.client_number
     ORDER BY loans.id DESC
@@ -63,7 +66,7 @@ export function createLoan(input: {
 
     return db.prepare(`
       SELECT loans.loan_number, loans.client_number, clients.full_name AS client_name,
-        loans.principal_amount, loans.total_due, loans.created_at
+        loans.principal_amount, loans.total_due, loans.total_due AS outstanding_balance, loans.created_at
       FROM loans
       JOIN clients ON clients.client_number = loans.client_number
       WHERE loans.id = ?

@@ -32,6 +32,14 @@ db.exec(`
     total_due INTEGER NOT NULL CHECK (total_due >= principal_amount),
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
   );
+
+  CREATE TABLE IF NOT EXISTS repayments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    loan_number TEXT NOT NULL REFERENCES loans(loan_number),
+    payment_reference TEXT NOT NULL UNIQUE,
+    amount INTEGER NOT NULL CHECK (amount > 0),
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );
 `);
 
 if (process.env.NODE_ENV !== "production") {

@@ -20,6 +20,9 @@ export default function Home() {
           <Link className="nav-link" href="/loans">
             <span className="nav-icon">▤</span> Loans
           </Link>
+          <Link className="nav-link" href="/repayments">
+            <span className="nav-icon">↙</span> Repayments
+          </Link>
         </nav>
 
         <div className="sidebar-bottom">

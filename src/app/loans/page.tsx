@@ -14,6 +14,7 @@ export default function LoansPage() {
           <Link className="nav-link" href="/"><span className="nav-icon">▦</span> Overview</Link>
           <Link className="nav-link" href="/clients"><span className="nav-icon">♙</span> Clients</Link>
           <Link className="nav-link active" href="/loans" aria-current="page"><span className="nav-icon">▤</span> Loans</Link>
+          <Link className="nav-link" href="/repayments"><span className="nav-icon">↙</span> Repayments</Link>
         </nav>
         <div className="sidebar-bottom">
           <div className="help-card"><span className="help-mark">?</span><div><strong>Need a hand?</strong><span>View the quick guide</span></div></div>
