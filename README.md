@@ -31,6 +31,6 @@ Run `npm test` to run the automated tests. `tests/repayments.test.ts` covers the
 
 ## AI tools disclosure
 
-I used ChatGPT to help plan and implement parts of the application, explain code and technical concepts, troubleshoot issues, and review the code. I reviewed the changes and ran the automated tests, and I am responsible for understanding and explaining the submitted code.
+I used ChatGPT for planning, implementation support and  troubleshooting. I reviewed the code and ran the automated tests. I’m responsible for understanding and explaining the submitted work.
 
 
