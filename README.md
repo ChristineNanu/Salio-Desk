@@ -17,4 +17,6 @@ Open **Repayments** to record a payment against a loan. Each payment needs a uni
 3. Start the development server with `npm run dev`.
 4. Open [http://localhost:3000](http://localhost:3000).
 
+Run the automated repayment tests with `npm test`.
+
 The current screen is the initial dashboard shell. Client, loan, and repayment workflows will be added in small steps.

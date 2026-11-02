@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { db } from "@/lib/db";
 import { parseAmount } from "@/lib/loans";
 import { getRepaymentHistory, recordRepayment } from "@/lib/repayments";
 
@@ -10,7 +11,7 @@ export function GET(request: Request) {
     return NextResponse.json({ error: "Choose a loan to view its repayment history." }, { status: 400 });
   }
 
-  const history = getRepaymentHistory(loanNumber);
+  const history = getRepaymentHistory(db, loanNumber);
   if (!history) return NextResponse.json({ error: "Loan not found." }, { status: 404 });
 
   return NextResponse.json({ history });
@@ -47,8 +48,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Enter a repayment greater than zero, with up to two decimal places." }, { status: 400 });
   }
 
-  const result = recordRepayment({ loanNumber, paymentReference, amount });
+  const result = recordRepayment(db, { loanNumber, paymentReference, amount });
   if (!result.ok) {
+    if (result.reason === "invalid_amount") {
+      return NextResponse.json({ error: "Repayment must be greater than zero." }, { status: 400 });
+    }
     if (result.reason === "loan_not_found") {
       return NextResponse.json({ error: "Loan not found. Refresh and choose a loan again." }, { status: 404 });
     }
