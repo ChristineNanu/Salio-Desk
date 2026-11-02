@@ -12,6 +12,7 @@ export type RepaymentHistory = {
   loanNumber: string;
   clientName: string;
   totalDue: number;
+  totalRepaid: number;
   outstandingBalance: number;
   repayments: Repayment[];
 };
@@ -62,6 +63,7 @@ export function getRepaymentHistory(database: Database.Database, loanNumber: str
     loanNumber: loan.loan_number,
     clientName: loan.client_name,
     totalDue: loan.total_due,
+    totalRepaid: loan.total_due - balance,
     outstandingBalance: balance,
     repayments: repayments.reverse(),
   };

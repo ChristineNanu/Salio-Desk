@@ -41,6 +41,7 @@ export function ClientDirectory() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          clientNumber: values.get("clientNumber"),
           fullName: values.get("fullName"),
           phone: values.get("phone"),
           email: values.get("email"),
@@ -68,13 +69,16 @@ export function ClientDirectory() {
 
       <div className="client-layout">
         <section className="client-form-card" aria-labelledby="new-client-heading">
-          <div className="section-heading"><div><h2 id="new-client-heading">Add a client</h2><p>A unique client number is assigned automatically.</p></div></div>
+          <div className="section-heading"><div><h2 id="new-client-heading">Add a client</h2><p>Use an existing client number or let the desk assign one.</p></div></div>
           <form className="client-form" onSubmit={handleSubmit}>
+            <label htmlFor="clientNumber">Client number <small>Optional</small></label>
+            <input id="clientNumber" name="clientNumber" maxLength={30} placeholder="e.g. CL-001 (leave blank to assign)" />
+
             <label htmlFor="fullName">Full name <span>*</span></label>
             <input id="fullName" name="fullName" autoComplete="name" maxLength={120} required placeholder="e.g. Amina Njeri" />
 
-            <label htmlFor="phone">Phone number <span>*</span></label>
-            <input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" maxLength={24} pattern="[+0-9 ]{7,24}" title="Use 7 to 15 digits. Spaces and a leading + are allowed." required placeholder="e.g. +254 712 345 678" />
+            <label htmlFor="phone">Phone number <small>Optional</small></label>
+            <input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" maxLength={24} pattern="[+0-9 ]{7,24}" title="Use 7 to 15 digits. Spaces and a leading + are allowed." placeholder="e.g. +254 712 345 678" />
 
             <label htmlFor="email">Email address <small>Optional</small></label>
             <input id="email" name="email" type="email" autoComplete="email" maxLength={254} placeholder="e.g. amina@example.com" />
@@ -94,7 +98,7 @@ export function ClientDirectory() {
               {clients.map((client) => (
                 <li className="client-row" key={client.clientNumber}>
                   <span className="client-avatar">{client.fullName.trim().charAt(0).toUpperCase()}</span>
-                  <span className="client-details"><strong>{client.fullName}</strong><small>{client.phone}{client.email ? ` · ${client.email}` : ""}</small></span>
+                  <span className="client-details"><strong>{client.fullName}</strong><small>{[client.phone, client.email].filter(Boolean).join(" · ") || "No contact details"}</small></span>
                   <span className="client-number">{client.clientNumber}</span>
                 </li>
               ))}

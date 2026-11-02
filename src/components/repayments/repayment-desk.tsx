@@ -172,6 +172,10 @@ export function RepaymentDesk() {
 
         <section className="client-list-card" aria-labelledby="history-heading">
           <div className="section-heading"><div><h2 id="history-heading">Repayment history</h2><p>{visibleHistory ? `${visibleHistory.loanNumber} · ${visibleHistory.clientName}` : "Payments for the selected loan"}</p></div></div>
+          {visibleHistory && <div className="repayment-summary">
+            <div><small>Total repaid</small><strong>KES {formatMoney(visibleHistory.totalRepaid)}</strong></div>
+            <div><small>Outstanding</small><strong>KES {formatMoney(visibleHistory.outstandingBalance)}</strong></div>
+          </div>}
           {isHistoryLoading ? <p className="list-placeholder">Loading repayment history…</p> : historyError ? <p className="list-placeholder error-message" role="alert">{historyError}</p> : !visibleHistory || visibleHistory.repayments.length === 0 ? (
             <div className="list-empty"><span className="list-empty-icon">↙</span><strong>No repayments recorded</strong><p>This loan’s payments will appear here.</p></div>
           ) : (
