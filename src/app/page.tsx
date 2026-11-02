@@ -17,9 +17,9 @@ export default function Home() {
           <Link className="nav-link" href="/clients">
             <span className="nav-icon">♙</span> Clients
           </Link>
-          <a className="nav-link" href="#loans">
+          <Link className="nav-link" href="/loans">
             <span className="nav-icon">▤</span> Loans
-          </a>
+          </Link>
         </nav>
 
         <div className="sidebar-bottom">
@@ -51,7 +51,7 @@ export default function Home() {
               <h1>Good morning</h1>
               <p className="welcome-copy">Here’s what’s happening with your clients today.</p>
             </div>
-            <button className="primary-button" type="button"><span>＋</span> New loan</button>
+            <Link className="primary-button" href="/loans"><span>＋</span> New loan</Link>
           </div>
 
           <div className="stats-grid" aria-label="Loan overview">

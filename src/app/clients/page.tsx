@@ -13,7 +13,7 @@ export default function ClientsPage() {
         <nav className="navigation">
           <Link className="nav-link" href="/"><span className="nav-icon">▦</span> Overview</Link>
           <Link className="nav-link active" href="/clients" aria-current="page"><span className="nav-icon">♙</span> Clients</Link>
-          <a className="nav-link" href="#loans"><span className="nav-icon">▤</span> Loans</a>
+          <Link className="nav-link" href="/loans"><span className="nav-icon">▤</span> Loans</Link>
         </nav>
         <div className="sidebar-bottom">
           <div className="help-card"><span className="help-mark">?</span><div><strong>Need a hand?</strong><span>View the quick guide</span></div></div>
