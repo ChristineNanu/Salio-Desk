@@ -19,4 +19,4 @@ Open **Repayments** to record a payment against a loan. Each payment needs a uni
 
 Run the automated repayment tests with `npm test`.
 
-The current screen is the initial dashboard shell. Client, loan, and repayment workflows will be added in small steps.
+
