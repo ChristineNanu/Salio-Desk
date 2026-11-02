@@ -1,20 +1,22 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="desk-shell">
       <aside className="sidebar" aria-label="Main navigation">
-        <a className="brand" href="/" aria-label="Salio Desk home">
+        <Link className="brand" href="/" aria-label="Salio Desk home">
           <span className="brand-mark">S</span>
           <span>salio<span className="brand-light">desk</span></span>
-        </a>
+        </Link>
 
         <div className="workspace-label">WORKSPACE</div>
         <nav className="navigation">
-          <a className="nav-link active" href="/" aria-current="page">
+          <Link className="nav-link active" href="/" aria-current="page">
             <span className="nav-icon">▦</span> Overview
-          </a>
-          <a className="nav-link" href="#clients">
+          </Link>
+          <Link className="nav-link" href="/clients">
             <span className="nav-icon">♙</span> Clients
-          </a>
+          </Link>
           <a className="nav-link" href="#loans">
             <span className="nav-icon">▤</span> Loans
           </a>
@@ -82,7 +84,7 @@ export default function Home() {
               </div>
               <h3>Your desk is ready</h3>
               <p>Once you add a client or record a loan, activity will show up here.</p>
-              <button className="secondary-button" type="button"><span>＋</span> Add your first client</button>
+              <Link className="secondary-button" href="/clients"><span>＋</span> Add your first client</Link>
             </div>
           </section>
 

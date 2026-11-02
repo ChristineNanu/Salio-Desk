@@ -2,6 +2,10 @@
 
 A small loan and repayment desk built with Next.js, TypeScript, and SQLite.
 
+## Client registration
+
+Open **Clients** from the left navigation to add a client. A client number is assigned automatically, and each record is saved in `data/salio.db` on the server.
+
 ## Run locally
 
 1. Install Node.js 20.9 or newer.
