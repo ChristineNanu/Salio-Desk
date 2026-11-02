@@ -6,7 +6,7 @@ A small loan and repayment desk built with Next.js and TypeScript, with records 
 
 Open **Clients** from the left navigation to add a client. A client number is assigned automatically, and each record is saved in `data/salio.db` on the server.
 
-Open **Loans** to create a loan for a registered client. Loan numbers are assigned automatically. Amounts are stored as integer cents; for this demo, total amount due must be at least the original loan amount.
+Open **Loans** to create a loan for a registered client. Loan numbers are assigned automatically. Amounts are stored as integer cents, total amount due must be at least the original loan amount.
 
 Open **Repayments** to record a payment against a loan. Each payment needs a unique reference and a positive amount no greater than the remaining balance. The screen shows the before and after balance impact, and outstanding balances are calculated from the repayment history.
 
