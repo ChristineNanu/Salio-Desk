@@ -16,18 +16,6 @@ function formatDate(value: string) {
   });
 }
 
-function getGreeting(date = new Date()) {
-  const hour = Number(new Intl.DateTimeFormat("en-GB", {
-    hour: "2-digit",
-    hourCycle: "h23",
-    timeZone: "Africa/Nairobi",
-  }).format(date));
-
-  if (hour < 12) return "Good morning";
-  if (hour < 16) return "Good afternoon";
-  return "Good evening";
-}
-
 export default function Home() {
   const overview = getOverview(db);
   const currentDate = new Intl.DateTimeFormat("en-KE", {
@@ -49,16 +37,16 @@ export default function Home() {
         <div className="workspace-label">WORKSPACE</div>
         <nav className="navigation">
           <Link className="nav-link active" href="/" aria-current="page">
-            <span className="nav-icon">▦</span> Overview
+            Overview
           </Link>
           <Link className="nav-link" href="/clients">
-            <span className="nav-icon">♙</span> Clients
+            Clients
           </Link>
           <Link className="nav-link" href="/loans">
-            <span className="nav-icon">▤</span> Loans
+            Loans
           </Link>
           <Link className="nav-link" href="/repayments">
-            <span className="nav-icon">↙</span> Repayments
+            Repayments
           </Link>
         </nav>
 
@@ -67,10 +55,9 @@ export default function Home() {
             <span className="help-mark">?</span>
             <div><strong>Need a hand?</strong><span>View the quick guide</span></div>
           </Link>
-          <div className="staff-profile">
-            <span className="avatar">JD</span>
-            <span className="staff-name">Desk staff</span>
-            <span className="profile-menu">•••</span>
+          <div className="workspace-status">
+            <span className="workspace-status-dot" />
+            <div><strong>Local workspace</strong><span>SQLite · KES</span></div>
           </div>
         </div>
       </aside>
@@ -86,26 +73,26 @@ export default function Home() {
         <div className="content">
           <div className="welcome-row">
             <div>
-              <p className="eyebrow">YOUR LOAN DESK</p>
-              <h1>{getGreeting()}</h1>
-              <p className="welcome-copy">Here’s what’s happening with your clients today.</p>
+              <p className="eyebrow">LOAN PORTFOLIO</p>
+              <h1>Portfolio overview</h1>
+              <p className="welcome-copy">Balances and payments recorded at this desk.</p>
             </div>
-            <Link className="primary-button" href="/loans"><span>＋</span> New loan</Link>
+            <Link className="primary-button" href="/loans">Create loan</Link>
           </div>
 
           <div className="stats-grid" aria-label="Loan overview">
             <article className="stat-card">
-              <div className="stat-heading">Active loans <span className="stat-icon violet">▤</span></div>
+              <div className="stat-heading">Active loans</div>
               <div className="stat-value">{overview.activeLoans}</div>
               <div className="stat-note">Loans currently being repaid</div>
             </article>
             <article className="stat-card">
-              <div className="stat-heading">Total outstanding <span className="stat-icon green">↗</span></div>
+              <div className="stat-heading">Outstanding balance</div>
               <div className="stat-value stat-money">KES {formatMoney(overview.totalOutstanding)}</div>
               <div className="stat-note">Across all active loans</div>
             </article>
             <article className="stat-card">
-              <div className="stat-heading">Payments recorded <span className="stat-icon amber">↙</span></div>
+              <div className="stat-heading">Payments this month</div>
               <div className="stat-value">{overview.paymentsThisMonth}</div>
               <div className="stat-note">This month</div>
             </article>
@@ -113,21 +100,16 @@ export default function Home() {
 
           <section className="activity-card" aria-labelledby="activity-heading">
             <div className="section-heading">
-              <div><h2 id="activity-heading">Recent activity</h2><p>Your latest loan and repayment updates</p></div>
-              <Link className="text-button" href="/repayments">View all <span>→</span></Link>
+              <div><h2 id="activity-heading">Recent loan activity</h2><p>Loans opened and repayments recorded</p></div>
+              <Link className="text-button" href="/repayments">View repayments <span>→</span></Link>
             </div>
             {overview.recentActivity.length === 0 ? <div className="empty-state">
-              <div className="empty-illustration" aria-hidden="true">
-                <div className="paper paper-back" /><div className="paper paper-front"><span /><span /><span /></div>
-                <div className="empty-sparkle">✦</div>
-              </div>
-              <h3>Your desk is ready</h3>
+              <h3>No loan activity yet</h3>
               <p>{overview.clientCount === 0 ? "Add a client to get your desk started." : "Create a loan or record a repayment to see recent activity here."}</p>
-              <Link className="secondary-button" href={overview.clientCount === 0 ? "/clients" : "/loans"}><span>＋</span> {overview.clientCount === 0 ? "Add your first client" : "Create a loan"}</Link>
+              <Link className="secondary-button" href={overview.clientCount === 0 ? "/clients" : "/loans"}>{overview.clientCount === 0 ? "Register a client" : "Create a loan"}</Link>
             </div> : <ul className="activity-list">
               {overview.recentActivity.map((activity) => (
                 <li className="activity-row" key={`${activity.type}-${activity.reference}`}>
-                  <span className={`activity-icon ${activity.type === "repayment" ? "activity-payment" : "activity-loan"}`}>{activity.type === "repayment" ? "↙" : "▤"}</span>
                   <span className="client-details"><strong>{activity.clientName}</strong><small>{activity.type === "repayment" ? "Payment" : "Loan"} · {activity.reference} · {formatDate(activity.createdAt)}</small></span>
                   <span className="activity-amount">{activity.type === "repayment" ? "− " : ""}KES {formatMoney(activity.amount)}</span>
                 </li>
@@ -135,7 +117,7 @@ export default function Home() {
             </ul>}
           </section>
 
-          <footer className="footer-note"><span className="secure-dot" /> Your records are kept clear and up to date.</footer>
+          <footer className="footer-note">Outstanding balances are calculated from recorded repayments.</footer>
         </div>
       </section>
     </main>
