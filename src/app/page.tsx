@@ -16,6 +16,18 @@ function formatDate(value: string) {
   });
 }
 
+function getGreeting(date = new Date()) {
+  const hour = Number(new Intl.DateTimeFormat("en-GB", {
+    hour: "2-digit",
+    hourCycle: "h23",
+    timeZone: "Africa/Nairobi",
+  }).format(date));
+
+  if (hour < 12) return "Good morning";
+  if (hour < 16) return "Good afternoon";
+  return "Good evening";
+}
+
 export default function Home() {
   const overview = getOverview(db);
   const currentDate = new Intl.DateTimeFormat("en-KE", {
@@ -76,7 +88,7 @@ export default function Home() {
           <div className="welcome-row">
             <div>
               <p className="eyebrow">YOUR LOAN DESK</p>
-              <h1>Good morning</h1>
+              <h1>{getGreeting()}</h1>
               <p className="welcome-copy">Here’s what’s happening with your clients today.</p>
             </div>
             <Link className="primary-button" href="/loans"><span>＋</span> New loan</Link>
