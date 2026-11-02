@@ -77,7 +77,7 @@ export function createLoan(input: {
 }
 
 export function parseAmount(value: unknown): number | null {
-  if (typeof value !== "string" || !/^\d+(?:\.\d{1,2})?$/.test(value.trim())) return null;
+  if (typeof value !== "string" || value.trim().length > 17 || !/^\d+(?:\.\d{1,2})?$/.test(value.trim())) return null;
 
   const [whole, fraction = ""] = value.trim().split(".");
   const minorUnits = BigInt(whole) * BigInt(100) + BigInt(fraction.padEnd(2, "0"));

@@ -95,10 +95,10 @@ export function LoanDirectory() {
               </select>
 
               <label htmlFor="principalAmount">Original loan amount (KES) <span>*</span></label>
-              <input id="principalAmount" name="principalAmount" type="text" inputMode="decimal" pattern="[0-9]+(\.[0-9]{1,2})?" required placeholder="e.g. 10000.00" />
+              <input id="principalAmount" name="principalAmount" type="text" inputMode="decimal" maxLength={17} pattern="[0-9]+(\.[0-9]{1,2})?" required placeholder="e.g. 10000.00" />
 
               <label htmlFor="totalDue">Total amount due (KES) <span>*</span></label>
-              <input id="totalDue" name="totalDue" type="text" inputMode="decimal" pattern="[0-9]+(\.[0-9]{1,2})?" required placeholder="e.g. 12000.00" />
+              <input id="totalDue" name="totalDue" type="text" inputMode="decimal" maxLength={17} pattern="[0-9]+(\.[0-9]{1,2})?" required placeholder="e.g. 12000.00" />
 
               <p className="field-hint">Total amount due should be at least the original loan amount.</p>
               {error && <p className="form-message error-message" role="alert">{error}</p>}

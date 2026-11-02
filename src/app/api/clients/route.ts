@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient, listClients } from "@/lib/clients";
+import { isValidPhoneNumber } from "@/lib/validation";
 
 export const runtime = "nodejs";
 
@@ -30,6 +31,9 @@ export async function POST(request: Request) {
   }
   if (fullName.length > 120 || phone.length > 40 || email.length > 254) {
     return NextResponse.json({ error: "One or more fields are too long." }, { status: 400 });
+  }
+  if (!isValidPhoneNumber(phone)) {
+    return NextResponse.json({ error: "Enter a valid phone number with 7 to 15 digits." }, { status: 400 });
   }
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });

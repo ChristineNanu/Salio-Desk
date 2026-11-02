@@ -154,7 +154,7 @@ export function RepaymentDesk() {
             <input id="paymentReference" name="paymentReference" type="text" maxLength={100} required placeholder="e.g. MPESA QAB12CD34" />
 
             <label htmlFor="amount">Amount received (KES) <span>*</span></label>
-            <input id="amount" name="amount" type="text" inputMode="decimal" pattern="[0-9]+(\.[0-9]{1,2})?" required placeholder="e.g. 2500.00" />
+            <input id="amount" name="amount" type="text" inputMode="decimal" maxLength={17} pattern="[0-9]+(\.[0-9]{1,2})?" required placeholder="e.g. 2500.00" />
 
             {error && <p className="form-message error-message" role="alert">{error}</p>}
             {confirmation?.loanNumber === selectedLoanNumber && (

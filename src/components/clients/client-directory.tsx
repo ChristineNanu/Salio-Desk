@@ -74,7 +74,7 @@ export function ClientDirectory() {
             <input id="fullName" name="fullName" autoComplete="name" maxLength={120} required placeholder="e.g. Amina Njeri" />
 
             <label htmlFor="phone">Phone number <span>*</span></label>
-            <input id="phone" name="phone" type="tel" autoComplete="tel" maxLength={40} required placeholder="e.g. +254 712 345 678" />
+            <input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" maxLength={24} pattern="[+0-9 ]{7,24}" title="Use 7 to 15 digits. Spaces and a leading + are allowed." required placeholder="e.g. +254 712 345 678" />
 
             <label htmlFor="email">Email address <small>Optional</small></label>
             <input id="email" name="email" type="email" autoComplete="email" maxLength={254} placeholder="e.g. amina@example.com" />
