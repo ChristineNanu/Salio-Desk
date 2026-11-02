@@ -80,7 +80,6 @@ export default function Home() {
           <div className="breadcrumbs">Workspace <span>/</span> Overview</div>
           <div className="topbar-right">
             <span className="today-label">{currentDate}</span>
-            <button className="icon-button" aria-label="Notifications">♧<i /></button>
           </div>
         </header>
 
