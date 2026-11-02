@@ -17,7 +17,7 @@ export default function GuidePage() {
         </nav>
         <div className="sidebar-bottom">
           <Link className="help-card" href="/guide" aria-current="page"><span className="help-mark">?</span><div><strong>Need a hand?</strong><span>View the quick guide</span></div></Link>
-          <div className="workspace-status"><span className="workspace-status-dot" /><div><strong>Local workspace</strong><span>SQLite · KES</span></div></div>
+          <div className="workspace-status"><span className="workspace-status-dot" /><div><strong>Local workspace</strong><span>KES currency</span></div></div>
         </div>
       </aside>
 

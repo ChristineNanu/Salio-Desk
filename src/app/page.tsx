@@ -57,7 +57,7 @@ export default function Home() {
           </Link>
           <div className="workspace-status">
             <span className="workspace-status-dot" />
-            <div><strong>Local workspace</strong><span>SQLite · KES</span></div>
+            <div><strong>Local workspace</strong><span>KES currency</span></div>
           </div>
         </div>
       </aside>

@@ -18,7 +18,7 @@ export default function ClientsPage() {
         </nav>
         <div className="sidebar-bottom">
           <Link className="help-card" href="/guide"><span className="help-mark">?</span><div><strong>Need a hand?</strong><span>View the quick guide</span></div></Link>
-          <div className="workspace-status"><span className="workspace-status-dot" /><div><strong>Local workspace</strong><span>SQLite · KES</span></div></div>
+          <div className="workspace-status"><span className="workspace-status-dot" /><div><strong>Local workspace</strong><span>KES currency</span></div></div>
         </div>
       </aside>
 
@@ -29,7 +29,7 @@ export default function ClientsPage() {
         </header>
         <div className="content">
           <ClientDirectory />
-          <footer className="footer-note">Client details are stored in the local SQLite database.</footer>
+          <footer className="footer-note">Client details are saved on this desk.</footer>
         </div>
       </section>
     </main>

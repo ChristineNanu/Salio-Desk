@@ -1,6 +1,6 @@
 # Salio Desk
 
-A small loan and repayment desk built with Next.js, TypeScript, and SQLite.
+A small loan and repayment desk built with Next.js and TypeScript, with records kept in a local database.
 
 ## Client registration
 
