@@ -69,7 +69,7 @@ export function ClientDirectory() {
 
       <div className="client-layout">
         <section className="client-form-card" aria-labelledby="new-client-heading">
-          <div className="section-heading"><div><h2 id="new-client-heading">Add a client</h2><p>Use an existing client number or let the desk assign one.</p></div></div>
+          <div className="section-heading"><div><h2 id="new-client-heading">Add a client</h2><p>Enter a client number, or leave blank to assign one.</p></div></div>
           <form className="client-form" onSubmit={handleSubmit}>
             <label htmlFor="clientNumber">Client number <small>Optional</small></label>
             <input id="clientNumber" name="clientNumber" maxLength={30} placeholder="e.g. CL-001 (leave blank to assign)" />
