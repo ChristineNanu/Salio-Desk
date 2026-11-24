@@ -23,6 +23,7 @@ Run the automated repayment tests with `npm test`.
 
 The app uses SQLite with three related tables: `clients`, `loans`, and `repayments`. A loan points to its client, and each repayment points to its loan. Foreign keys keep those links valid. Client numbers, loan numbers, and payment references are unique. Loan amounts and repayment amounts are stored as integer cents to avoid rounding errors with money.
 
+
 A loan's outstanding balance is its total amount due minus the sum of its repayments. Repayments must be greater than zero, refer to an existing loan, use a payment reference that has not been used before, and not exceed the remaining balance. These checks and the repayment insert run in a database transaction, so a rejected payment does not change the balance. The database also requires the total due to be at least the principal amount.
 
 ## Automated tests
